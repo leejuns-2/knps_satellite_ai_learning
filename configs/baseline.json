@@ -1,0 +1,12 @@
+{
+  "seed": 42,
+  "image_size": 64,
+  "train_samples": 128,
+  "val_samples": 32,
+  "batch_size": 16,
+  "epochs": 5,
+  "learning_rate": 0.001,
+  "threshold": 0.5,
+  "in_channels": 3,
+  "model_base": 16
+}

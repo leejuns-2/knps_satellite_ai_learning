@@ -1,0 +1,15 @@
+{
+  "data_root": "data/geotiff",
+  "image_dir": "images",
+  "mask_dir": "masks",
+  "bands": [1, 2, 3],
+  "image_scale": 10000.0,
+  "mask_threshold": 0.0,
+  "validation_fraction": 0.2,
+  "seed": 42,
+  "batch_size": 4,
+  "epochs": 10,
+  "learning_rate": 0.001,
+  "threshold": 0.5,
+  "model_base": 16
+}

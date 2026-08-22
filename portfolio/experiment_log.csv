@@ -1,0 +1,4 @@
+experiment_id,date,hypothesis,changed_variable,fixed_variables,dice,iou,precision,recall,result_interpretation,next_experiment
+baseline,,,,,,,,,,
+exp-01,,,,,,,,,,
+exp-02,,,,,,,,,,

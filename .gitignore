@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.idea/
+.vscode/
+.DS_Store
+.pytest_cache/
+.coverage
+checkpoints/*.pt
+outputs/*
+!outputs/.gitkeep
+data/*
+!data/.gitkeep
+!data/README.md
