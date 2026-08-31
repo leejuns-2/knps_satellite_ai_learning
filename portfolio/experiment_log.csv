@@ -1,4 +1,4 @@
-experiment_id,date,hypothesis,changed_variable,fixed_variables,dice,iou,precision,recall,result_interpretation,next_experiment
-baseline,,,,,,,,,,
-exp-01,,,,,,,,,,
-exp-02,,,,,,,,,,
+experiment_id,status,date,hypothesis,changed_variable,fixed_variables,dice,iou,precision,recall,result_interpretation,next_experiment
+baseline,pending,,,,,,,,,,
+exp-01,pending,,,,,,,,,,
+exp-02,pending,,,,,,,,,,
