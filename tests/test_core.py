@@ -15,6 +15,7 @@ from src.datasets import (
 from src.metrics import metric_dict
 from src.models import TinyUNet
 from src.utils import validate_baseline_config
+from train_geotiff import split_pairs_from_manifest
 
 
 class CorePipelineTests(unittest.TestCase):
@@ -93,6 +94,24 @@ class CorePipelineTests(unittest.TestCase):
             self.assertEqual(tuple(loaded_mask.shape), (1, 8, 8))
             self.assertAlmostEqual(float(loaded_image.mean()), 0.5, places=6)
             self.assertEqual(float(loaded_mask.sum()), 16.0)
+
+    def test_spatial_manifest_keeps_reserved_test_separate(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            pairs = [
+                (root / "region_a.tif", root / "region_a_mask.tif"),
+                (root / "region_b.tif", root / "region_b_mask.tif"),
+                (root / "region_c.tif", root / "region_c_mask.tif"),
+            ]
+            manifest = root / "split.csv"
+            manifest.write_text(
+                "stem,split\nregion_a,train\nregion_b,validation\nregion_c,test\n",
+                encoding="utf-8",
+            )
+            train, validation, test = split_pairs_from_manifest(pairs, manifest)
+            self.assertEqual([pair[0].stem for pair in train], ["region_a"])
+            self.assertEqual([pair[0].stem for pair in validation], ["region_b"])
+            self.assertEqual([pair[0].stem for pair in test], ["region_c"])
 
 
 if __name__ == "__main__":
