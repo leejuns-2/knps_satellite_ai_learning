@@ -76,7 +76,7 @@ python run_all.py
 python train_geotiff.py
 ```
 
-`GeoTiffSegmentationDataset`은 크기, CRS, affine transform 일치를 검사합니다. 현재 코드는 모든 파일을 메모리로 읽고 무작위 비율로 나누는 초기 골격입니다. 실제 실험에는 타일링, nodata 처리, 센서별 normalization, 지역 단위 split, geographic output 복원이 추가로 필요합니다. 입력 규칙은 [`data/README.md`](data/README.md)에 있습니다.
+`GeoTiffSegmentationDataset`은 크기, CRS, affine transform 일치를 검사합니다. 기본 설정은 `split_manifest.csv`를 사용해 완전한 장면/지역을 train, validation, reserved test로 명시적으로 분리합니다. `train_geotiff.py`는 reserved test를 평가하지 않으므로 validation을 보면서 설정을 정한 뒤 별도 final evaluation을 구현해야 합니다. `random_smoke_only`는 동작 확인용이며 benchmark 근거로 사용할 수 없습니다. 실제 실험에는 타일링, nodata 처리, 센서별 normalization, geographic output 복원이 추가로 필요합니다. 입력 규칙은 [`data/README.md`](data/README.md)에 있습니다.
 
 ## Metrics
 
@@ -119,5 +119,5 @@ inference.py   synthetic prediction examples
 - 실제 위성 데이터 성능과 geographic generalization 결과가 없습니다.
 - synthetic shapes는 실제 토지피복·재난 객체의 질감과 class imbalance를 재현하지 않습니다.
 - GeoTIFF loader는 초기 구현이며 대용량 raster tiling과 prediction stitching을 지원하지 않습니다.
-- 현재 split 방식은 공간적으로 가까운 patch 사이의 leakage를 막지 못합니다.
+- spatial manifest는 파일 단위 분리를 강제하지만, 파일 자체가 인접 patch라면 작성자가 region 단위 격리를 확인해야 합니다.
 - baseline experiment log의 metric은 아직 비어 있으며, 결과가 생성되기 전에는 성능을 주장하지 않습니다.
