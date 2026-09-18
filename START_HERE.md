@@ -1,6 +1,7 @@
 # START HERE · 실행형 학습 체크리스트
 
-이 파일은 Notion의 `01. 통합 학습 가이드`를 실제 코드 실행으로 연결하는 진입점입니다.
+이 문서는 저장소의 학습 실습을 순서대로 실행하고,
+각 단계에서 이해해야 할 개념과 실험 결과를 기록하기 위한 가이드입니다.
 
 ## 사용법
 
@@ -243,34 +244,6 @@ Early-fusion input [6,H,W]
 다음 단계:
 
 `TinyUNet(in_channels=6)`로 바꿔 실제 학습형 change detection Dataset을 구현한다.
-
----
-
-# 첫 GitHub 커밋 권장 범위
-
-처음에는 아래까지만 올려도 충분합니다.
-
-```text
-README.md
-START_HERE.md
-requirements.txt
-configs/
-labs/
-src/
-train.py
-evaluate.py
-inference.py
-portfolio/
-```
-
-실행 결과 중 포트폴리오에 보여줄 PNG/CSV/JSON만 선별해서 추가합니다.
-
-현재 저장소에서는 가상환경, checkpoint, 원본 데이터, 자동 생성 output을
-`.gitignore`로 제외합니다. 코드 변경 후에는 먼저 아래 테스트를 통과시킵니다.
-
-```bash
-python -m unittest discover -s tests -v
-```
 
 ---
 
